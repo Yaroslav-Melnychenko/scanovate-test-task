@@ -25,3 +25,19 @@
 .LazyLoad {
   background-color: rgb(240, 240, 240);
 }
+
+@media screen and (max-width: 992px) {
+  .info-container {
+    width: 100%;
+    padding: 35px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .top-info .LazyLoad {
+    display: none;
+  }
+  .main-info {
+    padding: 0;
+  }
+}

@@ -24,3 +24,13 @@
 .LazyLoad {
   background-color: rgb(240, 240, 240);
 }
+
+.title {
+  max-width: 135px;
+}
+
+@media screen and (max-width: 992px) {
+  .table-wrap {
+    width: 100%;
+  }
+}

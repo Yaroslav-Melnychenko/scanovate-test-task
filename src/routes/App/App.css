@@ -1,3 +1,14 @@
+body {
+  background-color: rgb(247, 247, 247);
+}
+
 .container {
   display: flex;
+}
+
+
+@media screen and (max-width: 992px) {
+  .container {
+    display: block;
+  }
 }

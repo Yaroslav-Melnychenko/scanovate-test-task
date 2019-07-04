@@ -44,11 +44,12 @@ class MovieList extends Component {
       {
         title: 'Title ',
         dataIndex: 'title',
-        render: title => <h3>{ title }</h3>
+        render: title => <h3 className="title">{ title }</h3>
       },
       {
         title: 'Date of creation',
         dataIndex: 'release_date',
+        align: 'right',
         render: date => <i>{ date }</i>
       },
     ];
@@ -65,7 +66,8 @@ class MovieList extends Component {
               loading: isFetching,
               data: data.results,
               total: data.total_results,
-              pageSize: 20 
+              pageSize: 20,
+              size: "small" 
             }}
             scroll={{ y: true }}
             showHeader={true}
