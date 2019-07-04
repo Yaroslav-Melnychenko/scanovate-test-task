@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'antd';
+import { Table, Spin } from 'antd';
 import LazyLoad from 'react-lazy-load';
 import { GET_MOVIE_IMAGE_URL } from '../../constants/apiUrl';
 import './MovieList.css';
@@ -56,7 +56,7 @@ class MovieList extends Component {
   
     return (
       <div className="table-wrap">
-        { data && 
+        { data ? 
           <Table 
             columns={columns} 
             dataSource={data.results} 
@@ -73,7 +73,7 @@ class MovieList extends Component {
             showHeader={true}
             onChange={this.handleTableChange}
             onRow={this.onRowClick}
-          /> 
+          /> : <div className="spinner"><Spin size="large" /></div>
         }
       </div>
     )

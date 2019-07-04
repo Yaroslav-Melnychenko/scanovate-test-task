@@ -29,6 +29,11 @@
   max-width: 135px;
 }
 
+.spinner {
+  width: 32px;
+  margin: 35px auto;
+}
+
 @media screen and (max-width: 992px) {
   .table-wrap {
     width: 100%;
