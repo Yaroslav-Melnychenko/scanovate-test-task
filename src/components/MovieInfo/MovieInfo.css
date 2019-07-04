@@ -1,0 +1,27 @@
+.info-container {
+  padding: 35px 35px 35px 0;
+  width: 60%;
+}
+
+.top-info {
+  display: flex;
+}
+
+.main-info {
+  padding-left: 25px;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.loading {
+  margin: 40px auto;
+  position: relative;
+  display: block;
+  width: 32px;
+}
+
+.LazyLoad {
+  background-color: rgb(240, 240, 240);
+}

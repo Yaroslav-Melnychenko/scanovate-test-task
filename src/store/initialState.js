@@ -6,8 +6,8 @@ export default {
     total_pages: null,
     results: []
   },
-  // movieInfo: {
-  //   isFetching: false, 
-  //   data: {}
-  // }
+  movieDetails: {
+    isFetching: false, 
+    data: {}
+  }
 };

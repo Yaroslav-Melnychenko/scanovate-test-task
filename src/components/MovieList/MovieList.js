@@ -11,9 +11,17 @@ class MovieList extends Component {
   }
 
   handleTableChange = ({ current }) => {
-    console.log(this.props);
     this.props.getMovieList(current);
   };
+
+  onRowClick = ({ id }) => {
+    const { getMovieDetails } = this.props;
+    return {
+      onClick: event => {
+        getMovieDetails(id);
+      }
+    };
+  }
 
   render() {
 
@@ -44,27 +52,27 @@ class MovieList extends Component {
         render: date => <i>{ date }</i>
       },
     ];
-
-    // console.log(data)
   
     return (
       <div className="table-wrap">
-        { data && <Table 
-          columns={columns} 
-          dataSource={data.results} 
-          rowKey="id" 
-          loading={isFetching} 
-          pagination={{ 
-            loading: isFetching,
-            data: data.results,
-            total: data.total_results,
-            // current: data.page,
-            pageSize: 20 
-          }}
-          scroll={{ y: true }}
-          showHeader={true}
-          onChange={this.handleTableChange}
-          /> }
+        { data && 
+          <Table 
+            columns={columns} 
+            dataSource={data.results} 
+            rowKey="id" 
+            loading={isFetching} 
+            pagination={{ 
+              loading: isFetching,
+              data: data.results,
+              total: data.total_results,
+              pageSize: 20 
+            }}
+            scroll={{ y: true }}
+            showHeader={true}
+            onChange={this.handleTableChange}
+            onRow={this.onRowClick}
+          /> 
+        }
       </div>
     )
   }
