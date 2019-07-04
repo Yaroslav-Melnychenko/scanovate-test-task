@@ -3,9 +3,8 @@ import MovieList from './MovieList';
 import { getMovieList } from '../../actions/movieList';
 
 const mapStateToProps = state => ({
-	// isFetching: state.cases.isFetching,
-	// data: state.cases.dataList,
-	// total: state.cases.total,
+	isFetching: state.movieList.isFetching,
+	data: state.movieList.data,
 });
 
 const mapDispatchToProps = dispatch => ({

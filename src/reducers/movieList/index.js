@@ -7,8 +7,7 @@ export default (state = initialState.movieList, { type, payload }) => {
 		}
 		case 'GET_MOVIE_LIST_REQUEST_SUCCESS': {
       const { data } = payload;
-      console.log('from reducer', data)
-			return { ...state, isFetching: false, results: data };
+			return { ...state, isFetching: false, data };
 		}
 
 		case 'GET_MOVIE_LIST_REQUEST_ERROR': {

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Table } from 'antd';
+import LazyLoad from 'react-lazy-load';
+import { GET_MOVIE_IMAGE_URL } from '../../constants/apiUrl';
+import './MovieList.css';
 
 class MovieList extends Component {
 
@@ -7,46 +10,62 @@ class MovieList extends Component {
     this.props.getMovieList();
   }
 
+  handleTableChange = ({ current }) => {
+    console.log(this.props);
+    this.props.getMovieList(current);
+  };
+
   render() {
+
+    const { data, isFetching } = this.props;
 
     const columns = [
       {
+        title: 'Poster',
+        dataIndex: 'poster_path',
+        render: image => (
+          <LazyLoad 
+            width={70}
+            height={105}
+            debounce={false}
+            offsetVertical={500}
+          >
+            <img className="poster" src={GET_MOVIE_IMAGE_URL + image} alt="" />
+          </LazyLoad>)
+      },
+      {
         title: 'Title ',
         dataIndex: 'title',
+        render: title => <h3>{ title }</h3>
       },
       {
-        title: 'Image',
-        dataIndex: 'image',
-      },
-      {
-        title: 'Year of creation',
-        dataIndex: 'year',
+        title: 'Date of creation',
+        dataIndex: 'release_date',
+        render: date => <i>{ date }</i>
       },
     ];
 
-    const data = [
-      {
-        key: '1',
-        title: 'John Brown',
-        image: 32,
-        year: 'New York No. 1 Lake Park',
-      },
-      {
-        key: '2',
-        title: 'Jim Green',
-        image: 42,
-        year: 'London No. 1 Lake Park',
-      },
-      {
-        key: '3',
-        title: 'Joe Black',
-        image: 32,
-        year: 'Sidney No. 1 Lake Park',
-      }
-    ];
+    // console.log(data)
   
     return (
-      <Table columns={columns} dataSource={data} />
+      <div className="table-wrap">
+        { data && <Table 
+          columns={columns} 
+          dataSource={data.results} 
+          rowKey="id" 
+          loading={isFetching} 
+          pagination={{ 
+            loading: isFetching,
+            data: data.results,
+            total: data.total_results,
+            // current: data.page,
+            pageSize: 20 
+          }}
+          scroll={{ y: true }}
+          showHeader={true}
+          onChange={this.handleTableChange}
+          /> }
+      </div>
     )
   }
 }
