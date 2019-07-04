@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Table } from 'antd';
 
 class MovieList extends Component {
+
+  componentDidMount() {
+    this.props.getMovieList();
+  }
+
   render() {
 
     const columns = [
